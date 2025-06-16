@@ -107,7 +107,7 @@ function submitQuiz(subject) {
         score: `${score}/${quiz.length}`
     };
 
-    emailjs.send('service_yz65r6c_gmail', '__ejs-test-mail-service___score', templateParams)
+    emailjs.send('service_gmail', 'template_score', templateParams)
         .then(function(response) {
             alert('✅ Kết quả đã được gửi tới giáo viên!');
         }, function(error) {
