@@ -1,0 +1,24 @@
+using System.Net;
+using System.Net.Mail;
+
+public void SendEmail()
+{
+    try
+    {
+        MailMessage mail = new MailMessage();
+        mail.From = new MailAddress("youremail@gmail.com");
+        mail.To.Add("nguyenthuy1402th@gmail.com");
+        mail.Subject = "Kết quả kiểm tra";
+        mail.Body = "Bạn đã đạt được 0/2 điểm.";
+
+        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+        smtp.Credentials = new NetworkCredential("youremail@gmail.com", "mật_khẩu_ứng_dụng");
+        smtp.EnableSsl = true;
+        smtp.Send(mail);
+    }
+    catch (Exception ex)
+    {
+        // Log lỗi để biết lý do gửi email thất bại
+        Console.WriteLine("Lỗi gửi email: " + ex.Message);
+    }
+}
